@@ -1,7 +1,9 @@
+import 'package:chatting_app/auth/auth_service.dart';
 import 'package:chatting_app/components/my_button.dart';
 import 'package:chatting_app/components/my_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoginPage extends StatelessWidget {
   // emial and psw controllers
@@ -12,7 +14,23 @@ class LoginPage extends StatelessWidget {
 
   LoginPage({super.key, required this.onTap});
 
-  void login() {}
+  void login(BuildContext context) async {
+    final authService = AuthService();
+
+    try {
+      await authService.signInWithEmailPassword(
+        _emailController.text,
+        _passwordController.text,
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +41,13 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Logo
-            Icon(
-              Icons.message,
+            // Icon(
+            //   Icons.message,
+            //   size: 60,
+            //   color: Theme.of(context).colorScheme.primary,
+            // ),
+
+            SpinKitFoldingCube(
               size: 60,
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -64,7 +87,7 @@ class LoginPage extends StatelessWidget {
             // Login
             MyButton(
               text: 'Login',
-              onTap: login,
+              onTap: () => login(context),
             ),
 
             const SizedBox(height: 25),
