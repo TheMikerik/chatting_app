@@ -1,4 +1,4 @@
-import 'package:chatting_app/auth/auth_service.dart';
+import 'package:chatting_app/services/auth/auth_service.dart';
 import 'package:chatting_app/components/my_button.dart';
 import 'package:chatting_app/components/my_textField.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class RegisterPage extends StatelessWidget {
 
     if (_passwordController.text == _confirmPasswordController.text) {
       try {
-        _auth.signInWithEmailPassword(
+        _auth.signUpWithEmailPassword(
           _emailController.text,
           _passwordController.text,
         );

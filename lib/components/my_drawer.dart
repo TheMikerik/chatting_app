@@ -1,4 +1,4 @@
-import 'package:chatting_app/auth/auth_service.dart';
+import 'package:chatting_app/services/auth/auth_service.dart';
 import 'package:chatting_app/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
@@ -30,8 +30,8 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25),
                 child: ListTile(
-                  title: Text('H O M E'),
-                  leading: Icon(Icons.home),
+                  title: const Text('H O M E'),
+                  leading: const Icon(Icons.home),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -40,15 +40,15 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25),
                 child: ListTile(
-                  title: Text('S E T T I N G S'),
-                  leading: Icon(Icons.home),
+                  title: const Text('S E T T I N G S'),
+                  leading: const Icon(Icons.home),
                   onTap: () {
                     Navigator.pop(context);
 
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SettingsPage(),
+                        builder: (context) => const SettingsPage(),
                       ),
                     );
                   },
@@ -59,8 +59,8 @@ class MyDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, bottom: 25),
             child: ListTile(
-              title: Text('L O G   O U T'),
-              leading: Icon(Icons.home),
+              title: const Text('L O G   O U T'),
+              leading: const Icon(Icons.home),
               onTap: logout,
             ),
           ),
